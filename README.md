@@ -1,77 +1,133 @@
 # SearXNG for Windows
 
-[SearXNG 是一个免费的互联网元搜索引擎，它汇总了来自各种搜索服务和数据库的结果。用户既不会被跟踪，也不会被分析。](https://github.com/searxng/searxng)
+[![SearXNG](https://img.shields.io/badge/SearXNG-2025.05.13-blue)](https://github.com/searxng/searxng)
+[![Python](https://img.shields.io/badge/Python-3.11+-green)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-AGPL--3.0-orange)](LICENSE)
 
-SearXNG 可以部署在 Liunx 主机或 Docker 环境，虽基于 python 开发，但未适配 Windows 环境。
+**SearXNG for Windows** — 原生 Windows 移植版，无需 WSL、Docker 或虚拟机，开箱即用。
 
-网络上查到的 Windows 环境部署 SearXNG 全是基于 WSL 的 Docker (Desktop)，或者是通过虚拟机。
+> 本仓库基于 [SearXNG](https://github.com/searxng/searxng) 官方最新版本 **[`2025.05.13` (0037d43)](https://github.com/searxng/searxng)** 深度适配 Windows 环境。
+> 相较于原始仓库（基于旧版 SearXNG 的私有修改），这是一次**完整的跨大版本升级**：源码全部替换为官方最新版，引擎全面更新，配置体系重构，并修复了所有已知的 Windows 兼容性问题。
 
-本仓库通过修改 SearXNG 源码，无需通过 WSL 和 虚拟机，完美适配 Windows 环境，且仓库搭配好 Python 环境，可直接启动运行。
-
-
+---
 
 ## 仓库介绍
 
-**python**
+### 目录结构
 
-> 基于 python-3.11.9-embed-amd64，已安装好 searxng 运行所需要的依赖包
+| 目录/文件 | 说明 |
+|-----------|------|
+| `python/` | 内置 Python 3.11.9 embeddable 环境 + 全部依赖 |
+| `config/` | 配置文件目录（`settings.yml`, `limiter.toml`, `requirements.txt`） |
+| `searxng.ico` | SearXNG 图标 |
+| `SearXNG for Windows.lnk` | 启动快捷方式（带 SearXNG 图标） |
+| `SearXNG for Windows.bat` | 命令行启动脚本 |
 
-**searx**
+### 版本说明
 
-> 20250513：同步 SearXNG仓库，基于 *5d99373bc65c7087ee743a1fe44897bad6065338*
->
-> 20250424：基于 SearXNG 2025.4.25+9ec9499d8，已修改适配 Windows 环境
+| 项目 | 版本 |
+|------|------|
+| SearXNG 源码 | **[`2025.05.13`](https://github.com/searxng/searxng/commit/0037d43)** — 官方最新稳定版 |
+| Python | 3.11.9 embeddable (win_amd64) |
 
+### 25 种搜索引擎已就绪
 
+出厂默认启用了 23 种搜索引擎，覆盖常用类别：
 
-### 直接使用
+- **Google** 系：google, google images, google news, google video
+- **Bing** 系：bing, bing images, bing news, bing video
+- **DuckDuckGo** 系：duckduckgo, duckduckgo images, duckduckgo videos, duckduckgo news
+- **百度**：baidu
+- **学术**：google scholar, arxiv, pubmed, semantic scholar
+- **IT 技术**：github, stackoverflow, wikipedia, ask ubuntu
+- **社交**：reddit
 
-下载后直接执行 SearXNG for Windows.bat 或者 SearXNG for Windows.exe 可启动 SearXNG，默认访问路径
+> 可在 Web 界面的「首选项」页面自由启用/禁用更多搜索引擎（共 280+ 引擎）。
 
-```http
+---
+
+## 快速开始
+
+双击 **`SearXNG for Windows.lnk`**（或运行 `SearXNG for Windows.bat`），启动后访问：
+
+```
 http://localhost:8888
 ```
 
-或
+### 启动效果示例
 
-```http
-http://127.0.0.1:8888
+```
+ * Serving Flask app 'searx.webapp'
+ * Debug mode: off
+ * Running on http://0.0.0.0:8888
 ```
 
+---
 
+## 使用本地 Python 环境
 
-### 代理配置
-
-配置文件 config/settings.yml， 找到 outgoing 部分配置，参考以下修改
-
-```yaml
-outgoing:
-  proxies: "http://127.0.0.1:7897" # 代理地址，根据实际使用配置
-  request_timeout: 10.0 # 可适当延长超时时间
-  max_retries: 3
-```
-
-
-
-### 使用本地 python 环境
-
-安装 config/requirements.txt 中依赖包
+如果不想使用内置的 embedded Python，也可以用系统安装的 Python：
 
 ```bash
 pip install -r config/requirements.txt
-```
-
-启动 SearXNG
-
-```bash
 python ./python/Lib/site-packages/searx/webapp.py
 ```
 
-访问路径同上
+---
 
-为了方便使用，默认禁用了大部分搜索引擎，仅保留了搜狗和百度，启动后可在首选项页面进行修改
+## 代理配置
 
-> 其他使用事项可参考原仓库 https://github.com/searxng/searxng
+编辑 `config/settings.yml` 的 `outgoing` 部分：
 
+```yaml
+outgoing:
+  proxies: "http://127.0.0.1:7897"   # 替换为你的代理地址
+  request_timeout: 10.0
+  max_retries: 3
+```
 
+---
 
+## Windows 兼容性修改
+
+相比官方版本，本仓库做了以下适配修改，确保在原生 Windows 环境下正常运行：
+
+| 文件 | 修改内容 |
+|------|---------|
+| `searx/settings_loader.py` | 配置文件路径改为 `config/` 目录 |
+| `searx/favicons/__init__.py` | 图标缓存路径改为 `config/` 目录 |
+| `searx/version.py` | 兼容 Windows 下无 `LC_ALL`/`LANGUAGE` 环境变量 |
+| `searx/network/client.py` | 设置 `WindowsSelectorEventLoopPolicy` 避免事件循环兼容性问题 |
+| `searx/webutils.py` | 修复路径分隔符（`os.sep` → `/`），确保模板文件正常加载 |
+| `searx/engines/__init__.py` | 禁用状态的引擎跳过 `setup()` 初始化，避免启动时非关键报错 |
+| `searx/limiter.py` | 限流配置文件路径改为 `config/limiter.toml` |
+| `searx/utils.py` | 兼容 `searx_useragent()` 旧函数名（部分引擎依赖） |
+| `searx/valkeydb.py` | 移除 `pwd` 模块依赖（Unix-only），改用 `os.getenv('USERNAME')` |
+
+---
+
+## 从旧版本升级
+
+如果你正在使用基于老版 SearXNG 的 `SearXNGforWindows`，本仓库的升级要点：
+
+1. ✅ **源码全面替换** — 从旧版私有分支升级到官方 `2025.05.13`（0037d43）
+2. ✅ **引擎全量更新** — 280+ 引擎全部替换为新版，23 个常用引擎默认启用
+3. ✅ **配置重构** — 配置改存 `config/` 目录，与源码解耦
+4. ✅ **依赖升级** — 所有 Python 依赖同步官方最新版本
+5. ✅ **原生 Windows** — 纯 Python 实现，无需 WSL/Docker
+6. ✅ **安全提升** — `safe_search` 默认开启（中等过滤），`autocomplete` 自带 Bing 建议
+
+---
+
+## 相关链接
+
+- 官方 SearXNG 仓库：https://github.com/searxng/searxng
+- 问题反馈：https://github.com/dcjk2010/SearXNGforWindows/issues
+- 公共实例列表：https://searx.space
+- 官方文档：https://docs.searxng.org/
+
+---
+
+## 许可证
+
+[AGPL-3.0](LICENSE)

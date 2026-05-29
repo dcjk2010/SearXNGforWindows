@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """
- Searx (all)
+Searx (all)
 """
 
 from json import loads
@@ -53,7 +53,5 @@ def response(resp):
         results.extend(response_json[i])
 
     results.extend({'suggestion': s} for s in response_json['suggestions'])
-
-    results.append({'number_of_results': response_json['number_of_results']})
 
     return results
