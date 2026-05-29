@@ -2063,6 +2063,7 @@ search:
   favicon_resolver: ''
   formats:
   - html
+  - json
   max_ban_time_on_fail: 120
   safe_search: 1
   suspended_times:
