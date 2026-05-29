@@ -1,12 +1,12 @@
 # SearXNG for Windows
 
-[![SearXNG](https://img.shields.io/badge/SearXNG-2025.05.13-blue)](https://github.com/searxng/searxng)
+[![SearXNG](https://img.shields.io/badge/SearXNG-2026.05.29-blue)](https://github.com/searxng/searxng)
 [![Python](https://img.shields.io/badge/Python-3.11+-green)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-orange)](LICENSE)
 
 **SearXNG for Windows** — 原生 Windows 移植版，无需 WSL、Docker 或虚拟机，开箱即用。
 
-> 本仓库基于 [SearXNG](https://github.com/searxng/searxng) 官方最新版本 **[`2025.05.13` (0037d43)](https://github.com/searxng/searxng)** 深度适配 Windows 环境。
+> 本仓库基于 [SearXNG](https://github.com/searxng/searxng) 官方最新版本 **[`2026.05.29` (0037d43)](https://github.com/searxng/searxng)** 深度适配 Windows 环境。
 > 相较于原始仓库（基于旧版 SearXNG 的私有修改），这是一次**完整的跨大版本升级**：源码全部替换为官方最新版，引擎全面更新，配置体系重构，并修复了所有已知的 Windows 兼容性问题。
 
 ---
@@ -27,7 +27,7 @@
 
 | 项目 | 版本 |
 |------|------|
-| SearXNG 源码 | **[`2025.05.13`](https://github.com/searxng/searxng/commit/0037d43)** — 官方最新稳定版 |
+| SearXNG 源码 | **[`2026.05.29`](https://github.com/searxng/searxng/commit/0037d43)** — 官方最新稳定版 |
 | Python | 3.11.9 embeddable (win_amd64) |
 
 ### 25 种搜索引擎已就绪
@@ -110,7 +110,7 @@ outgoing:
 
 如果你正在使用基于老版 SearXNG 的 `SearXNGforWindows`，本仓库的升级要点：
 
-1. ✅ **源码全面替换** — 从旧版私有分支升级到官方 `2025.05.13`（0037d43）
+1. ✅ **源码全面替换** — 从旧版私有分支升级到官方 `2026.05.29`（0037d43）
 2. ✅ **引擎全量更新** — 280+ 引擎全部替换为新版，23 个常用引擎默认启用
 3. ✅ **配置重构** — 配置改存 `config/` 目录，与源码解耦
 4. ✅ **依赖升级** — 所有 Python 依赖同步官方最新版本
