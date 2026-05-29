@@ -239,7 +239,7 @@ engines:
 - engine: bing_news
   name: bing news
   shortcut: bin
-  disabled: false
+  disabled: true
 - engine: bing_videos
   name: bing videos
   shortcut: biv
@@ -465,7 +465,7 @@ engines:
   engine: duckduckgo_extra
   name: duckduckgo images
   shortcut: ddi
-  disabled: false
+  disabled: true
 - categories:
   - videos
   ddg_category: videos
@@ -678,7 +678,7 @@ engines:
 - engine: google_news
   name: google news
   shortcut: gon
-  disabled: false
+  disabled: true
 - engine: google_videos
   name: google videos
   shortcut: gov
@@ -2027,10 +2027,11 @@ general:
   open_metrics: ''
   privacypolicy_url: false
 outgoing:
+  useragent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
   enable_http2: true
   pool_connections: 100
   pool_maxsize: 20
-  request_timeout: 3.0
+  request_timeout: 10.0
   useragent_suffix: ''
 plugins:
   searx.plugins.ahmia_filter.SXNGPlugin:
