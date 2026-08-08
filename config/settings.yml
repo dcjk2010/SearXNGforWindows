@@ -134,27 +134,6 @@ engines:
   timeout: 6.0
   title_xpath: ./td/h5
   url_xpath: ./td/h5/a[last()]/@href
-- categories:
-  - general
-  disabled: true
-  engine: aol
-  name: aol
-  search_type: search
-  shortcut: aol
-- categories:
-  - images
-  disabled: true
-  engine: aol
-  name: aol images
-  search_type: image
-  shortcut: aoli
-- categories:
-  - videos
-  disabled: true
-  engine: aol
-  name: aol videos
-  search_type: video
-  shortcut: aolv
 - engine: archlinux
   name: arch linux wiki
   shortcut: al
@@ -1208,45 +1187,6 @@ engines:
   - https://pximg.example.org
   remove_ai_images: false
   shortcut: pv
-- categories:
-  - general
-  - web
-  disabled: true
-  engine: presearch
-  name: presearch
-  search_type: search
-  shortcut: ps
-  timeout: 4.0
-- categories:
-  - images
-  - web
-  disabled: true
-  engine: presearch
-  name: presearch images
-  network: presearch
-  search_type: images
-  shortcut: psimg
-  timeout: 4.0
-- categories:
-  - general
-  - web
-  disabled: true
-  engine: presearch
-  name: presearch videos
-  network: presearch
-  search_type: videos
-  shortcut: psvid
-  timeout: 4.0
-- categories:
-  - news
-  - web
-  disabled: true
-  engine: presearch
-  name: presearch news
-  network: presearch
-  search_type: news
-  shortcut: psnews
-  timeout: 4.0
 - about:
     official_api_documentation: https://pub.dev/help/api
     require_api_key: false
@@ -1331,11 +1271,6 @@ engines:
   name: radio browser
   shortcut: rb
   disabled: true
-- disabled: false
-  engine: reddit
-  name: reddit
-  page_size: 25
-  shortcut: re
 - engine: reuters
   name: reuters
   shortcut: reu
@@ -1902,11 +1837,6 @@ engines:
   timeout: 5.0
   title_xpath: //div[@class="upper-synonyms"]/a
   url_xpath: //div[@class="upper-synonyms"]/a/@href
-- disabled: true
-  engine: svgrepo
-  name: svgrepo
-  shortcut: svg
-  timeout: 10.0
 - engine: tootfinder
   name: tootfinder
   shortcut: toot
@@ -2103,3 +2033,4 @@ ui:
   url_formatting: pretty
 valkey:
   url: false
+
